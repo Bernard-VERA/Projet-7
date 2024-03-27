@@ -15,3 +15,9 @@ exports.createBook = (req, res, next) => {
     .then(() => {res.status(201).json({ message: 'Post saved successfully' })})
     .catch((error) => {res.status(400).json({ error })});
 };
+
+exports.getAllBooks = (req, res, next) => {
+    Book.find()
+    .then(books => res.status(200).json(books))
+    .catch(error => res.status(400).json({ error }));
+}
