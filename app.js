@@ -1,7 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const User = require('./models/user');
+const userRoutes = require('./routes/user');
+const booksRoutes = require('./routes/books')
 
-const app = express();
+
 
 // Début du paragraphe pour la connection a MongoDB
 const uri = "mongodb+srv://BernardV:13008@cluster0.ekvhmmx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -20,7 +23,9 @@ async function run() {
 run().catch(console.dir);
 // Fin du paragraphe pour la connection a MongoDB
 
-// Donne un résultat au format JSON
+const app = express();
+
+// Donne un résultat au format JSON (remplace body.parser)
 app.use(express.json());
 
 // MiddleWare CORS
@@ -31,23 +36,9 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use((req, res, next) => {
-  console.log('Requête reçue !');
-  next();
-});
+ app.use('/api/auth', userRoutes);
+ app.use('/api/books', booksRoutes)
 
-app.use((req, res, next) => {
-  res.status(201);
-  next();
-});
 
-app.use((req, res, next) => {
-  res.json({ message: 'Votre requête a bien été reçue !' });
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log('Réponse envoyée avec succès !');
-});
 
 module.exports = app;
