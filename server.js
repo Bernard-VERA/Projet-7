@@ -12,6 +12,7 @@ const normalizePort = val => {
   }
   return false;
 };
+// Utilisation du port 4000 par défaut
 const port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
