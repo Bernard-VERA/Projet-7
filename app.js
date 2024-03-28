@@ -36,7 +36,7 @@ app.use((req, res, next) => {
   });
 
 
-
+// ce paragraphe sert a vérifier que le localhost:4000 fonctionne (pas d'erreur dans la console)
   app.use((req, res, next) => {
     console.log('Requête reçue !');
     next();
@@ -55,6 +55,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   console.log('Réponse envoyée avec succès !');
 });
+// Le paragraphe du dessus sera supprimé aprés les tests du localhost:4000
 
 
 
