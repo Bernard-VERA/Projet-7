@@ -34,12 +34,11 @@ module.exports.resizeImage = (req, res, next) => {
   const newFilePath = path.join('images', `resized_${fileName}`);
 
   sharp(filePath)
-    .resize({ width: 206, height: 260 })
+    .resize({ width: 206, fit: sharp.fit.contain })
     .toFile(newFilePath)
     .then(() => {
       fs.unlink(filePath, () => {
         req.file.path = newFilePath;
-        console.log(newFilePath);
         next();
       });
     })
