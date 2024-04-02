@@ -31,29 +31,6 @@ app.use((req, res, next) => {
   });
 
 
- //ce paragraphe sert a vérifier que le localhost:4000 fonctionne (pas d'erreur dans la console)
-/*  app.use((req, res, next) => {
-    console.log(req.body);
-    next();
-  });
-  
-  app.use((req, res, next) => {
-    res.status(201);
-    next();
-  });
-
-app.use((req, res, next) => {
-  res.json({ message: 'Votre requête a bien été reçue !' });
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log('Réponse envoyée avec succès !');
-});*/
-//Le paragraphe du dessus sera supprimé aprés les tests du localhost:4000 
-
-
-
  app.use('/api/auth', userRoutes);
  app.use('/api/books', booksRoutes);
  app.use('/images', express.static(path.join(__dirname, 'images')));
