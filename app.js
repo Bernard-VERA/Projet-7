@@ -14,7 +14,6 @@ try {
 } catch (error) {
   console.error('COULD NOT CONNECT TO DATABASE:', error.message);
 }
-
 // Fin du paragraphe pour la connection a MongoDB
 
 const app = express();
@@ -22,7 +21,7 @@ const app = express();
 // Donne un résultat au format JSON (remplace body.parser)
 app.use(express.json());
 
-// MiddleWare CORS
+// MiddleWare CORS qui permet d'utiliser les headers et méthodes indiqués, depuis n'importe quelle origine.
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');

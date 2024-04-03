@@ -1,6 +1,7 @@
 const Book = require('../models/book');
 const fs = require('fs');
 
+// calcul de la moyenne du rating
 function average(array) {
     let sum = 0;
     for (let nb of array) {
@@ -44,7 +45,7 @@ exports.modifyBook = (req, res, next) => {
     Book.findOne({_id: req.params.id})
         .then((book) => {
             if (book.userId != req.auth.userId) {
-                res.status(401).json({ message : 'Not authorized'});
+                res.status(403).json({ message : 'Unauthorized request'});
             } else {
                 const filename = book.imageUrl.split('/images')[1];
                 req.file && fs.unlink(`images/${filename}`, (err => {
@@ -105,7 +106,7 @@ exports.createRating = (req, res, next) => {
             } else {
                 newRatings.push(ratingObject);
                 const grades = newRatings.map(rating => rating.grade);
-                const averageGrades = average.average(grades);
+                const averageGrades = average(grades);
                 book.averageRating = averageGrades;
                 Book.updateOne({ _id: req.params.id }, { ratings: newRatings, averageRating: averageGrades, _id: req.params.id })
                     .then(() => { res.status(201).json()})
