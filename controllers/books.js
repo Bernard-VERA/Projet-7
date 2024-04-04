@@ -117,9 +117,9 @@ exports.createRating = (req, res, next) => {
         .catch((error) => {
             res.status(400).json({ error });
         });
-} else {
-    res.status(400).json({ message: 'La note doit être comprise entre 1 et 5' }); 
-}
+    } else {
+        res.status(400).json({ message: 'La note doit être comprise entre 1 et 5' }); 
+        }
 };
 
 exports.getBestRating = (req, res, next) => {
@@ -127,3 +127,15 @@ exports.getBestRating = (req, res, next) => {
     .then((books)=>res.status(200).json(books))
     .catch((error)=>res.status(400).json({error}));
 };
+
+  /* Trie les éléments par moyenne de notation (du plus élevé au plus bas)
+  const sortedElements = elements.sort((a, b) => b.averageRating - a.averageRating);
+
+  // Récupère les 3 premiers éléments
+  const topThreeElements = sortedElements.slice(0, 3);
+
+  return topThreeElements;
+
+  essai : Book.find().sort({ averageRating }).limit(3)
+  ne marche pas
+  */
