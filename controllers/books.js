@@ -123,19 +123,7 @@ exports.createRating = (req, res, next) => {
 };
 
 exports.getBestRating = (req, res, next) => {
-    Book.find().limit(3)
+    Book.find().sort({ averageRating: -1}).limit(3)
     .then((books)=>res.status(200).json(books))
     .catch((error)=>res.status(400).json({error}));
 };
-
-  /* Trie les éléments par moyenne de notation (du plus élevé au plus bas)
-  const sortedElements = elements.sort((a, b) => b.averageRating - a.averageRating);
-
-  // Récupère les 3 premiers éléments
-  const topThreeElements = sortedElements.slice(0, 3);
-
-  return topThreeElements;
-
-  essai : Book.find().sort({ averageRating }).limit(3)
-  ne marche pas
-  */

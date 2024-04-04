@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 const booksRoutes = require('./routes/books');
 const userRoutes = require('./routes/user');
 const path = require('path');
+require("dotenv").config();
 
 
 
 // Début du paragraphe pour la connection a MongoDB
-const uri = "mongodb+srv://BernardV:13008@cluster0.ekvhmmx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 try {
-  mongoose.connect('mongodb+srv://BernardV:13008@cluster0.ekvhmmx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {});
+  mongoose.connect(process.env.MONGO_DATABASE_USER, {});
   console.log("CONNECTED TO DATABASE SUCCESSFULLY");
 } catch (error) {
   console.error('COULD NOT CONNECT TO DATABASE:', error.message);

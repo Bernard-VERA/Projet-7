@@ -6,8 +6,7 @@ const fs = require('fs');
 const MIME_TYPES = {
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',
-  'image/png': 'png',
-  'image/webp': 'webp'
+  'image/png': 'png'
 };
 
 const storage = multer.diskStorage({
@@ -37,8 +36,9 @@ module.exports.resizeImage = (req, res, next) => {
     .resize({ width: 206, fit: sharp.fit.contain })
     .toFile(newFilePath)
     .then(() => {
-      fs.unlink(filePath, () => {
+      fs.unlink(filePath, (error) => {
         req.file.path = newFilePath;
+        console.log(error);
         next();
       });
     })
