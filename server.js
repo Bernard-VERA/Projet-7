@@ -12,10 +12,11 @@ const normalizePort = val => {
   }
   return false;
 };
-// Utilisation du port 4000 par défaut
+// NormalizePort = Utilisation du port 4000 par défaut
 const port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
+// errorHandler = recherche les erreurs et les gère de manière appropriée
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -36,6 +37,7 @@ const errorHandler = error => {
   }
 };
 
+// Création de l' "application server"
 const server = http.createServer(app);
 
 server.on('error', errorHandler);

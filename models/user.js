@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true }
 });
 
+// Le plugin uniqueValidator de Mongoose assure que l'adresse mail sera unique dans la BDD
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);

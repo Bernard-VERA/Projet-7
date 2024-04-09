@@ -10,6 +10,10 @@ function average(array) {
     return(sum/array.length).toFixed(1);
 };
 
+// L'opérateur spread (...bookObject) permet de récupérer tous les champs du corps de la requète.
+// Il faut enlever les Id et userId par défauts, qui ne sont pas bons, puis vérifier l' authentification
+// On indique nom et url de l'image, et un rating, qui de base est défini à 0
+// La méthode save enregistre le livre dans la BDD
 exports.createBook = (req, res, next) => {
     const bookObject = JSON.parse(req.body.book);
     delete bookObject._id;
@@ -35,6 +39,7 @@ exports.getOneBook = (req, res, next) => {
     });
 };
 
+// Seul celui qui l'a créé peut modifier un livre (req.auth.userId)
 exports.modifyBook = (req, res, next) => {
     const bookObject = req.file ? {
         ...JSON.parse(req.body.book),
@@ -65,7 +70,7 @@ exports.modifyBook = (req, res, next) => {
     Book.findOne({ _id: req.params.id})
         .then(book => {
             if (book.userId != req.auth.userId) {
-                res.status(401).json({message: 'Not authorized'});
+                res.status(403).json({message: 'Unauthorized request'});
             } else {
                 const filename = book.imageUrl.split('/images/')[1];
                 fs.unlink(`images/${filename}`, () => {
@@ -91,8 +96,8 @@ exports.getAllBooks = (req, res, next) => {
     });
 };
 
-
-
+// Création d'un rating, sauf si l'utilisateur à déjà voté (includes)
+// On ajoute le nouveau rating (push) et on met à jour la moyenne (average(grades))
 exports.createRating = (req, res, next) => {
     if (0<= req.body.rating <=5) {
         const ratingObject = { ...req.body, grade: req.body.rating };
@@ -122,6 +127,7 @@ exports.createRating = (req, res, next) => {
         }
 };
 
+// Affichage des 3 meilleurs livres
 exports.getBestRating = (req, res, next) => {
     Book.find().sort({ averageRating: -1}).limit(3)
     .then((books)=>res.status(200).json(books))

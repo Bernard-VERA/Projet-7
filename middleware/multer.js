@@ -9,6 +9,7 @@ const MIME_TYPES = {
   'image/png': 'png'
 };
 
+// Middleware Multer qui permet d'uploader une image, en modifiant son nom
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, 'images');
@@ -22,6 +23,7 @@ const storage = multer.diskStorage({
 
 module.exports = multer({storage: storage}).single('image');
 
+// Middleware Sharp qui retaille l'image, ajoute resized dans son nom, et supprime l'image d'origine
 module.exports.resizeImage = (req, res, next) => {
   if (!req.file) {
     return next();
