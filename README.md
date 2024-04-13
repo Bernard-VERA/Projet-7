@@ -8,8 +8,9 @@ Avant d'installer et d'exécuter ce projet vous devez avoir installé Node.js et
 1. Clonez ce dépot dans un dossier "backend" sur votre ordinateur.
 2. Installez les dépendances nécessaires avec la commande `npm install`.
 3. __Attention ! L'utilisation d'un fichier ".env" est obligatoire.__ Pour l'instant, ce fichier est uniquement accessible à l'équipe éducative d'Openclassrooms, dans le cadre de ma formation.
-4. __Copiez le fichier ".env" fourni dans les livrables, sur le site d'Openclassrooms et collez-le à la racine du dossier "backend".__ Ce fichier contient les mots de passe pour accéder à la base de données.
-5. Une fois le fichier ".env" installé, lancez l'application avec la commande `nodemon server` ou `node server`
+4. __Copiez le fichier ".env" fourni dans les livrables, sur le site d'Openclassrooms, et collez-le à la racine du dossier "backend".__ Ce fichier contient les mots de passe pour accéder à la base de données MongoDB.
+5. Une fois le fichier ".env" installé, lancez l'application avec la commande `nodemon server` ou `node server`.
+6. L'application sera disponible sur le port 4000.
 
 ## Frontend
 Le frontend de l'application est mis à disposition par Openclassrooms, à l'adresse: 
