@@ -40,11 +40,10 @@ Pour supprimer ces erreurs du frontend, vous pouvez ajouter ce code dans le fich
 ## Scénario  
 
 Vous êtes développeur back-end en freelance depuis maintenant un an. Vous avez l’habitude de travailler avec Kévin, un développeur front-end plus expérimenté que vous, et qui a déjà un bon réseau de contacts dans le milieu.  
-  
 Kévin vous contacte pour vous proposer de travailler avec lui en mutualisant vos compétences front / back sur un tout nouveau projet qui lui a été proposé. Il s’agit d’une petite chaîne de librairies qui souhaite ouvrir un site de référencement et de notation de livres.  
 Kevin vous envoi un message :  
 
-*Développement d’un site de notation de livres*
+*Développement d’un site de notation de livres*  
 *Salut, Ça y est, j’ai terminé le front-end du site ! Tout est disponible sur GitHub. J’ai aussi préparé le document de spécifications techniques de l’API, qui sera en fait ton cahier des charges pour le développement du back-end. Assure-toi que l’ensemble du site fonctionne bien, normalement le front est complètement prêt pour se brancher à ton API.*
 *Une fois que tu auras terminé, je te propose qu’on fasse un point tous les deux pour que tu me présentes ton code, et qu’on vérifie que l’application fonctionne bien. Ensuite je pourrai envoyer tout ça au client, et lui présenter le site finalisé.*
 
@@ -66,7 +65,8 @@ Le projet comprendra également la gestion du téléchargement et de l'optimisat
 Vous respecterez les bonnes pratiques du Green Code pour réduire l'empreinte écologique du site.
 Pour compléter le projet, vous utiliserez Mongoose pour modéliser les données MongoDB, et vous suivrez une architecture MVC (Modèle-Vue-Contrôleur) pour structurer votre application.
 
-Compétences :
+## Compétences :  
+
 * Le développement back-end, en particulier avec Node.js, Express, et MongoDB, est essentiel pour créer des applications web modernes et performantes. 
 * La maîtrise des opérations CRUD, de la sécurité des données, et de l'authentification sont des compétences clés pour tout développeur back-end. 
 * De plus, l'expérience avec l'architecture MVC et la création d'API RESTful vous préparera à travailler sur des applications web full-stack complexes.
