@@ -18,9 +18,9 @@ Avant d'installer et d'exécuter ce projet vous devez avoir installé Node.js et
 1. Clonez ce dépot dans un dossier "backend" sur votre ordinateur.
 2. Installez les dépendances nécessaires avec la commande `npm install`.
 3. __Attention ! L'utilisation d'un fichier ".env" est obligatoire.__ Pour cela,vous devez créer un fichier __.env__ à la racine du back-end.
-4. Ce fichier contient les mots de passe pour accéder à la base de données MongoDB. Il devra y avoir deux lignes
-* MONGO_DATABASE_USER="xxxxxxxxxxxxxxxxxxxxxx" (les X représentent l'adresse de votre base de données MongoDB, avec identifiant et mot de passe).  
-* SECRET_KEY="RANDOM_TOKEN_SECRET"
+4. Ce fichier contient les mots de passe pour accéder à la base de données MongoDB que vous devrez créer. Il devra y avoir deux lignes :
+* `MONGO_DATABASE_USER="xxxxxxxxxxxxxxxxxxxxxx"` (les X représentent l'adresse de votre base de données MongoDB, avec identifiant et mot de passe).  
+* `SECRET_KEY="RANDOM_TOKEN_SECRET"`
 5. Une fois le fichier __.env__ installé, lancez l'application avec la commande `nodemon server` ou `node server`.
 6. L'application sera disponible sur le port 4000.
 
@@ -44,14 +44,14 @@ Kévin vous contacte pour vous proposer de travailler avec lui en mutualisant vo
 Kevin vous envoi un message :  
 
 *Développement d’un site de notation de livres*  
-*Salut, Ça y est, j’ai terminé le front-end du site ! Tout est disponible sur GitHub. J’ai aussi préparé le document de spécifications techniques de l’API, qui sera en fait ton cahier des charges pour le développement du back-end. Assure-toi que l’ensemble du site fonctionne bien, normalement le front est complètement prêt pour se brancher à ton API.*
+*Salut, ça y est, j’ai terminé le front-end du site ! Tout est disponible sur GitHub. J’ai aussi préparé le document de spécifications techniques de l’API, qui sera en fait ton cahier des charges pour le développement du back-end. Assure-toi que l’ensemble du site fonctionne bien, normalement le front est complètement prêt pour se brancher à ton API.*
 *Une fois que tu auras terminé, je te propose qu’on fasse un point tous les deux pour que tu me présentes ton code, et qu’on vérifie que l’application fonctionne bien. Ensuite je pourrai envoyer tout ça au client, et lui présenter le site finalisé.*
 
 *Pièces jointes :*   
 * *Spécifications techniques de l’API*  
 * *Code du front-end sur GitHub*  
 
-*Dernière requête*  
+*Dernière requête :*  
 *Pour que le projet soit conforme aux bonnes pratiques du Green Code, il faut qu’on prenne en compte la taille des images. Dans le Back-End, il faut optimiser les images qui seront envoyées par les utilisateurs. Il y en aura beaucoup.*  
 *A bientôt.*
 
