@@ -9,7 +9,7 @@ const MIME_TYPES = {
   'image/png': 'png'
 };
 
-// Middleware Multer qui permet d'uploader une image, en modifiant son nom
+// Middleware multer.diskStorage qui permet d'uploader une image, en modifiant son nom
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, 'images');

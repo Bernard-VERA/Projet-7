@@ -19,6 +19,7 @@ exports.signup = (req, res, next) => {
 
 // Login utilisateur. bcrypt compare le mot de passe avec celui de la BDD
 // Si correct, on renvoie un userId et un Token
+// JWT encode les données avec jwt.sign : le userId et le token (qui seront utilisés pour chaque authentification de requète)
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
     .then(user => {

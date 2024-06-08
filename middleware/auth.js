@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 require("dotenv").config();
  
 // Vérification de la validité du Token avec la clé secrète
-// Le userId vérifié est ajouté à toute requète demandant une authentification (auth)
+// split permet de séparer, et récuperer uniquement la partie du token située après le bearer
+// Le userId vérifié par verify, est ajouté à toute requète demandant une authentification (auth)
 module.exports = (req, res, next) => {
    try {
        const token = req.headers.authorization.split(' ')[1];
