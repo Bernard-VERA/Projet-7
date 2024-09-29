@@ -74,5 +74,5 @@ Pour compléter le projet, vous utiliserez Mongoose pour modéliser les données
 ----
 
 <p align="center" width="100%">
-    <img width="90%" src="https://github.com/Bernard-VERA/Projet-7/blob/master/kasa.jpg"> 
+    <img width="90%" src="https://github.com/Bernard-VERA/Projet-7/blob/master/grimoire.jpg"> 
 </p>
