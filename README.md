@@ -70,3 +70,9 @@ Pour compléter le projet, vous utiliserez Mongoose pour modéliser les données
 * Le développement back-end, en particulier avec Node.js, Express, et MongoDB, est essentiel pour créer des applications web modernes et performantes. 
 * La maîtrise des opérations CRUD, de la sécurité des données, et de l'authentification sont des compétences clés pour tout développeur back-end. 
 * De plus, l'expérience avec l'architecture MVC et la création d'API RESTful vous préparera à travailler sur des applications web full-stack complexes.
+
+----
+
+<p align="center" width="100%">
+    <img width="90%" src="https://github.com/Bernard-VERA/Projet-7/blob/master/kasa.jpg"> 
+</p>
