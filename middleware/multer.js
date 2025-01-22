@@ -29,13 +29,25 @@ module.exports.resizeImage = (req, res, next) => {
     return next();
   }
 
-  const filePath = path.resolve(req.file.path);
+  let filePath;
+  try {
+    filePath = path.resolve(req.file.path);
+  } catch (err) {
+    console.log('Error resolving file path:', err);
+    return next();
+  }
   const fileName = req.file.filename;
  
   const newFilePath = path.join('images', `resized_${fileName}`);
 
   // Normalize and validate the filePath
-  const resolvedFilePath = fs.realpathSync(filePath);
+  let resolvedFilePath;
+  try {
+    resolvedFilePath = fs.realpathSync(filePath);
+  } catch (err) {
+    console.log('Error resolving real file path:', err);
+    return next();
+  }
   const rootDir = path.resolve('images');
   if (!resolvedFilePath.startsWith(rootDir)) {
     console.log('Invalid file path');
