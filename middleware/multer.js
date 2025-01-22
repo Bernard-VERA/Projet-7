@@ -29,10 +29,16 @@ module.exports.resizeImage = (req, res, next) => {
     return next();
   }
 
-  const filePath = req.file.path;
+  const filePath = path.resolve(req.file.path);
   const fileName = req.file.filename;
  
   const newFilePath = path.join('images', `resized_${fileName}`);
+
+  // Ensure the filePath is within the 'images' directory
+  if (!filePath.startsWith(path.resolve('images'))) {
+    console.log('Invalid file path');
+    return next();
+  }
 
   sharp.cache(false)
   sharp(filePath)
