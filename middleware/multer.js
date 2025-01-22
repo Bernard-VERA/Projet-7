@@ -38,7 +38,13 @@ module.exports.resizeImage = (req, res, next) => {
   }
   const fileName = req.file.filename;
  
-  const newFilePath = path.join('images', `resized_${fileName}`);
+  let newFilePath;
+  try {
+    newFilePath = path.resolve('images', `resized_${fileName}`);
+  } catch (err) {
+    console.log('Error resolving new file path:', err);
+    return next();
+  }
 
   // Normalize and validate the filePath
   let resolvedFilePath;
@@ -51,6 +57,19 @@ module.exports.resizeImage = (req, res, next) => {
   const rootDir = path.resolve('images');
   if (!resolvedFilePath.startsWith(rootDir)) {
     console.log('Invalid file path');
+    return next();
+  }
+
+  // Validate the newFilePath
+  let resolvedNewFilePath;
+  try {
+    resolvedNewFilePath = fs.realpathSync(newFilePath);
+  } catch (err) {
+    console.log('Error resolving real new file path:', err);
+    return next();
+  }
+  if (!resolvedNewFilePath.startsWith(rootDir)) {
+    console.log('Invalid new file path');
     return next();
   }
 
