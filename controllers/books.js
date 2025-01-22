@@ -56,7 +56,14 @@ exports.modifyBook = (req, res, next) => {
                 req.file && fs.unlink(`images/${filename}`, (err => {
                     if (err) console.log(err);
                 }));
-                Book.updateOne({ _id: req.params.id}, { ...bookObject, _id: req.params.id})
+                const updateFields = {
+                    title: bookObject.title,
+                    author: bookObject.author,
+                    description: bookObject.description,
+                    imageUrl: bookObject.imageUrl,
+                    averageRating: bookObject.averageRating
+                };
+                Book.updateOne({ _id: req.params.id}, { $set: updateFields })
                 .then(() => res.status(200).json({message : 'Livre modifié!'}))
                 .catch(error => res.status(401).json({ error }));
             }
