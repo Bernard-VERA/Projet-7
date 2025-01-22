@@ -34,8 +34,10 @@ module.exports.resizeImage = (req, res, next) => {
  
   const newFilePath = path.join('images', `resized_${fileName}`);
 
-  // Ensure the filePath is within the 'images' directory
-  if (!filePath.startsWith(path.resolve('images'))) {
+  // Normalize and validate the filePath
+  const resolvedFilePath = fs.realpathSync(filePath);
+  const rootDir = path.resolve('images');
+  if (!resolvedFilePath.startsWith(rootDir)) {
     console.log('Invalid file path');
     return next();
   }
