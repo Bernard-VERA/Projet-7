@@ -29,6 +29,8 @@ module.exports.resizeImage = (req, res, next) => {
     return next();
   }
 
+  const rootDir = path.resolve('images');
+
   let filePath;
   try {
     filePath = path.resolve(req.file.path);
@@ -54,7 +56,6 @@ module.exports.resizeImage = (req, res, next) => {
     console.log('Error resolving real file path:', err);
     return next();
   }
-  const rootDir = path.resolve('images');
   if (!resolvedFilePath.startsWith(rootDir)) {
     console.log('Invalid file path');
     return next();
@@ -74,12 +75,12 @@ module.exports.resizeImage = (req, res, next) => {
   }
 
   sharp.cache(false)
-  sharp(filePath)
+  sharp(resolvedFilePath)
     .resize({ width: 206, fit: sharp.fit.contain })
-    .toFile(newFilePath)
+    .toFile(resolvedNewFilePath)
     .then(() => {
-      fs.unlink(filePath, (error) => {
-        req.file.path = newFilePath;
+      fs.unlink(resolvedFilePath, (error) => {
+        req.file.path = resolvedNewFilePath;
         next();
       });
     })
