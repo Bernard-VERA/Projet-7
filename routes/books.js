@@ -16,7 +16,7 @@ router.get('/', getAllBooksLimiter, booksCtrl.getAllBooks);
 router.get('/bestrating', booksCtrl.getBestRating);
 router.get('/:id', booksCtrl.getOneBook);
 router.post('/', createBookLimiter, auth, multer, multer.resizeImage, booksCtrl.createBook);
-router.post('/:id/rating', authLimiter, auth, booksCtrl.createRating);
+router.post('/:id/rating', createRatingLimiter, authLimiter, auth, booksCtrl.createRating);
 router.put('/:id', authLimiter, auth, multer, multer.resizeImage, booksCtrl.modifyBook);
 const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -29,6 +29,11 @@ const deleteBookLimiter = rateLimit({
 });
 
 router.delete('/:id', deleteBookLimiter, auth, booksCtrl.deleteBook);
+
+const createRatingLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 30 // limit each IP to 30 create rating requests per windowMs
+});
 
 const createBookLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
