@@ -16,7 +16,7 @@ router.get('/', getAllBooksLimiter, booksCtrl.getAllBooks);
 router.get('/bestrating', booksCtrl.getBestRating);
 router.get('/:id', booksCtrl.getOneBook);
 router.post('/', createBookLimiter, auth, multer, multer.resizeImage, booksCtrl.createBook);
-router.post('/:id/rating', createRatingLimiter, auth, booksCtrl.createRating);
+router.post('/:id/rating', createRatingLimiter, authLimiter, auth, booksCtrl.createRating);
 router.put('/:id', authLimiter, auth, multer, multer.resizeImage, booksCtrl.modifyBook);
 const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
