@@ -33,7 +33,7 @@ module.exports.resizeImage = (req, res, next) => {
 
   let filePath;
   try {
-    filePath = path.resolve(req.file.path);
+    filePath = path.resolve(rootDir, req.file.path);
   } catch (err) {
     console.log('Error resolving file path:', err);
     return next();
@@ -42,7 +42,7 @@ module.exports.resizeImage = (req, res, next) => {
  
   let newFilePath;
   try {
-    newFilePath = path.resolve('images', `resized_${fileName}`);
+    newFilePath = path.resolve(rootDir, `resized_${fileName}`);
   } catch (err) {
     console.log('Error resolving new file path:', err);
     return next();
