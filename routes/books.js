@@ -15,7 +15,7 @@ const getAllBooksLimiter = rateLimit({
 router.get('/', getAllBooksLimiter, booksCtrl.getAllBooks);
 router.get('/bestrating', booksCtrl.getBestRating);
 router.get('/:id', booksCtrl.getOneBook);
-router.post('/', createBookLimiter, authLimiter, auth, multer, resizeImageLimiter, multer.resizeImage, booksCtrl.createBook);
+router.post('/', createBookLimiter, authLimiter, authRateLimiter, auth, multer, resizeImageLimiter, multer.resizeImage, booksCtrl.createBook);
 router.post('/:id/rating', createRatingLimiter, authLimiter, auth, booksCtrl.createRating);
 router.put('/:id', modifyBookLimiter, authLimiter, auth, multer, multer.resizeImage, booksCtrl.modifyBook);
 router.post('/', createBookLimiter, authLimiter, authRateLimiter, auth, multer, resizeImageLimiter, multer.resizeImage, booksCtrl.createBook);
