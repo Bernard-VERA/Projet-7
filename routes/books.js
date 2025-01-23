@@ -18,6 +18,7 @@ router.get('/:id', booksCtrl.getOneBook);
 router.post('/', createBookLimiter, auth, multer, multer.resizeImage, booksCtrl.createBook);
 router.post('/:id/rating', createRatingLimiter, authLimiter, auth, booksCtrl.createRating);
 router.put('/:id', modifyBookLimiter, authLimiter, auth, multer, multer.resizeImage, booksCtrl.modifyBook);
+
 const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 50 // limit each IP to 50 requests per windowMs for authenticated routes
