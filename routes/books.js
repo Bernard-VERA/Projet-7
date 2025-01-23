@@ -17,7 +17,7 @@ router.get('/bestrating', booksCtrl.getBestRating);
 router.get('/:id', booksCtrl.getOneBook);
 router.post('/', createBookLimiter, authLimiter, authRateLimiter, auth, multer, resizeImageLimiter, multer.resizeImage, booksCtrl.createBook);
 router.post('/:id/rating', createRatingLimiter, authLimiter, authRateLimiter, auth, booksCtrl.createRating);
-router.put('/:id', modifyBookLimiter, authLimiter, auth, multer, multer.resizeImage, booksCtrl.modifyBook);
+router.put('/:id', modifyBookLimiter, authLimiter, authRateLimiter, auth, multer, resizeImageLimiter, multer.resizeImage, booksCtrl.modifyBook);
 router.post('/', createBookLimiter, authLimiter, authRateLimiter, auth, multer, resizeImageLimiter, multer.resizeImage, booksCtrl.createBook);
 
 const authLimiter = rateLimit({
