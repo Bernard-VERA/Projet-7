@@ -28,7 +28,7 @@ const deleteBookLimiter = rateLimit({
     max: 10 // limit each IP to 10 delete requests per windowMs
 });
 
-router.delete('/:id', auth, deleteBookLimiter, booksCtrl.deleteBook);
+router.delete('/:id', deleteBookLimiter, auth, booksCtrl.deleteBook);
 
 const createBookLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
