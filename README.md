@@ -12,7 +12,7 @@ Ce dépot contient le backend de l'application Mon Vieux Grimoire
 
 
 ## Prérequis
-Avant d'installer et d'exécuter ce projet vous devez avoir installé Node.js et npm.
+Avant d'installer et d'exécuter ce projet vous devez avoir installé Node.js (Version 20.11.1) et npm.
 
 ## Installation du back-end
 1. Clonez ce dépot dans un dossier "backend" sur votre ordinateur.
